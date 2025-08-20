@@ -3,6 +3,7 @@
 import type React from "react"
 
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -15,7 +16,10 @@ interface UniversalContactFormProps {
   showPropertyType?: boolean
   showMessage?: boolean
   buttonText?: string
+  formType?: string
   onSubmit?: (data: any) => void
+  onSuccess?: (data: any) => void
+  onError?: (error: string) => void
 }
 
 export function UniversalContactForm({
@@ -24,7 +28,10 @@ export function UniversalContactForm({
   showPropertyType = false,
   showMessage = false,
   buttonText = "Submit",
+  formType = "contact",
   onSubmit,
+  onSuccess,
+  onError,
 }: UniversalContactFormProps) {
   const [formData, setFormData] = useState({
     fullName: "",
@@ -33,18 +40,65 @@ export function UniversalContactForm({
     propertyType: "",
     message: "",
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const router = useRouter()
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    onSubmit?.(formData)
-    // Reset form
-    setFormData({
-      fullName: "",
-      mobile: "",
-      email: "",
-      propertyType: "",
-      message: "",
-    })
+    console.log('Form submission started')
+    setIsSubmitting(true)
+
+    try {
+      // Prepare data for API
+      const submissionData = {
+        ...formData,
+        formType,
+        timestamp: new Date().toISOString()
+      }
+
+      console.log('Submitting form data:', submissionData)
+
+      // Submit to API
+      const response = await fetch('/api/submit-form', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(submissionData),
+      })
+
+      console.log('API Response status:', response.status)
+      console.log('API Response ok:', response.ok)
+
+      const result = await response.json()
+      console.log('API Response result:', result)
+
+      if (response.ok) {
+        // Success - redirect to thank you page
+        console.log('Form submitted successfully, redirecting to thank you page...')
+
+        // Call onSubmit for backward compatibility
+        onSubmit?.(formData)
+
+        // Build query parameters for thank you page
+        const params = new URLSearchParams({
+          type: formType,
+          name: formData.fullName
+        })
+
+        // Redirect to thank you page
+        router.push(`/thank-you?${params.toString()}`)
+      } else {
+        // Error
+        console.error('API returned error status:', response.status, result)
+        throw new Error(result.error || 'Failed to submit form')
+      }
+    } catch (error) {
+      console.error('Form submission error:', error)
+      onError?.(error instanceof Error ? error.message : 'Failed to submit form')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleChange = (field: string, value: string) => {
@@ -68,6 +122,7 @@ export function UniversalContactForm({
             value={formData.fullName}
             onChange={(e) => handleChange("fullName", e.target.value)}
             required
+            className="h-12 text-base"
           />
         </div>
 
@@ -82,6 +137,7 @@ export function UniversalContactForm({
             value={formData.mobile}
             onChange={(e) => handleChange("mobile", e.target.value)}
             required
+            className="h-12 text-base"
           />
         </div>
 
@@ -96,6 +152,7 @@ export function UniversalContactForm({
             value={formData.email}
             onChange={(e) => handleChange("email", e.target.value)}
             required
+            className="h-12 text-base"
           />
         </div>
 
@@ -105,7 +162,7 @@ export function UniversalContactForm({
               Property Type
             </Label>
             <Select value={formData.propertyType} onValueChange={(value) => handleChange("propertyType", value)}>
-              <SelectTrigger>
+              <SelectTrigger className="h-12 text-base">
                 <SelectValue placeholder="Select property type" />
               </SelectTrigger>
               <SelectContent>
@@ -128,12 +185,17 @@ export function UniversalContactForm({
               value={formData.message}
               onChange={(e) => handleChange("message", e.target.value)}
               rows={4}
+              className="text-base"
             />
           </div>
         )}
 
-        <Button type="submit" className="w-full bg-gray-900 hover:bg-gray-800 text-white hover-lift">
-          {buttonText}
+        <Button
+          type="submit"
+          disabled={isSubmitting}
+          className="w-full h-12 text-base bg-gray-900 hover:bg-gray-800 text-white hover-lift disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          {isSubmitting ? "Submitting..." : buttonText}
         </Button>
       </form>
     </div>

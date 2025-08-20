@@ -1,0 +1,19 @@
+# Netlify configuration for Next.js (App Router)
+# Docs: https://github.com/netlify/next-runtime
+
+[build]
+  command = "npm run build"
+  # Do not set publish for Next.js + plugin; the plugin handles routing/output
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[build.environment]
+  NODE_VERSION = "18"
+  NEXT_TELEMETRY_DISABLED = "1"
+
+# Required environment variables (set these in Netlify UI → Site settings → Environment variables)
+# GOOGLE_SHEET_ID = "<your_google_sheet_id>"
+# GOOGLE_SERVICE_ACCOUNT_KEY_BASE64 = "<base64_of_service_account_json>"
+#
+# Optional: any other runtime config vars should be added here and consumed via process.env
