@@ -25,3 +25,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+# Google service account/credentials JSON (never commit)
+*googleusercontent.com.json
+email-*.json
+client_secret*.json
+service-account*.json
+*.key.json
