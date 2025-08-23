@@ -669,7 +669,7 @@ export default function Page() {
 
       <Button
         onClick={() => setIsFloatingEnquiryOpen(true)}
-        className="fixed right-4 md:right-6 bottom-6 z-50 bg-blue-600 hover:bg-blue-700 text-white px-4 md:px-6 py-2 md:py-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 animate-pulse text-sm md:text-base min-h-[44px] min-w-[44px]"
+        className="fixed right-4 md:right-6 bottom-6 z-50 bg-[var(--color-gold)] text-black hover:brightness-110 px-4 md:px-6 py-2 md:py-3 rounded-full shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 animate-pulse text-sm md:text-base min-h-[44px] min-w-[44px] focus:ring-2 focus:ring-[oklch(0.21_0.034_264.665)]"
       >
         Enquiry Now
       </Button>
@@ -700,7 +700,7 @@ export default function Page() {
 
       <Contact onSubmit={handleContactSubmit} />
 
-      <footer className="bg-gray-950 text-white py-12 animate-on-scroll">
+      <footer className="bg-gradient-to-b from-[#0d0f16] to-black text-white py-12 animate-on-scroll border-t border-[var(--color-gold)]">
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-8">
             <div>
@@ -737,53 +737,53 @@ export default function Page() {
             </div>
 
             <div>
-              <div className="text-lg font-semibold mb-4">Quick Links</div>
+              <div className="text-lg font-semibold mb-4 text-[var(--color-gold)]">Quick Links</div>
               <div className="space-y-2 text-sm">
                 <button
                   onClick={() => scrollToSection("home")}
-                  className="block text-gray-400 hover:text-white transition-colors"
+                  className="block text-gray-400 hover:text-[var(--color-gold)] transition-colors"
                 >
                   Home
                 </button>
                 <button
                   onClick={() => scrollToSection("overview")}
-                  className="block text-gray-400 hover:text-white transition-colors"
+                  className="block text-gray-400 hover:text-[var(--color-gold)] transition-colors"
                 >
                   Overview
                 </button>
                 <button
                   onClick={() => scrollToSection("configuration")}
-                  className="block text-gray-400 hover:text-white transition-colors"
+                  className="block text-gray-400 hover:text-[var(--color-gold)] transition-colors"
                 >
                   Configuration
                 </button>
                 <button
                   onClick={() => scrollToSection("amenities")}
-                  className="block text-gray-400 hover:text-white transition-colors"
+                  className="block text-gray-400 hover:text-[var(--color-gold)] transition-colors"
                 >
                   Amenities
                 </button>
                 <button
                   onClick={() => scrollToSection("location")}
-                  className="block text-gray-400 hover:text-white transition-colors"
+                  className="block text-gray-400 hover:text-[var(--color-gold)] transition-colors"
                 >
                   Location
                 </button>
                 <button
                   onClick={() => scrollToSection("gallery")}
-                  className="block text-gray-400 hover:text-white transition-colors"
+                  className="block text-gray-400 hover:text-[var(--color-gold)] transition-colors"
                 >
                   Gallery
                 </button>
                 <button
                   onClick={() => scrollToSection("floor-plans")}
-                  className="block text-gray-400 hover:text-white transition-colors"
+                  className="block text-gray-400 hover:text-[var(--color-gold)] transition-colors"
                 >
                   Floor Plans
                 </button>
                 <button
                   onClick={() => scrollToSection("about")}
-                  className="block text-gray-400 hover:text-white transition-colors"
+                  className="block text-gray-400 hover:text-[var(--color-gold)] transition-colors"
                 >
                   About Us
                 </button>
@@ -791,7 +791,7 @@ export default function Page() {
             </div>
           </div>
 
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center">
+          <div className="border-t border-white/10 mt-8 pt-8 text-center">
             <p className="text-gray-500 text-sm">© 2024 Emberlynn Group. All rights reserved.</p>
           </div>
         </div>

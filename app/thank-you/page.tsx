@@ -69,15 +69,15 @@ function ThankYouContent() {
     }
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+        <div className="min-h-screen bg-gradient-to-br from-[var(--ivory)] to-[var(--beige)]">
             {/* Header */}
-            <header className="bg-white shadow-sm border-b border-gray-200">
+            <header className="bg-white shadow-sm border-b border-[var(--beige)]">
                 <div className="container mx-auto px-6 py-4">
                     <div className="flex items-center justify-between">
                         <div className="flex items-center space-x-3">
                             <Link href="/" className="flex items-center space-x-3">
                                 {/* Logo */}
-                                <div className="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-gray-900 to-black rounded-full shadow-lg">
+                                <div className="flex items-center justify-center w-10 h-10 bg-[var(--navy)] rounded-full shadow-lg">
                                     <div className="relative w-6 h-6">
                                         <div className="absolute inset-0 flex items-center justify-center">
                                             <div className="text-lg font-bold text-brand tracking-tight" style={{ fontFamily: 'Georgia, serif' }}>
@@ -98,13 +98,13 @@ function ThankYouContent() {
                                 </div>
                                 <div>
                                     <div className="text-2xl font-bold text-brand" style={{ fontFamily: 'Georgia, serif' }}>AAROHAN</div>
-                                    <div className="text-xs text-gray-500 font-medium tracking-widest uppercase">by Emberlynn</div>
+                                    <div className="text-xs text-[var(--navy)]/70 font-medium tracking-widest uppercase">by Emberlynn</div>
                                 </div>
                             </Link>
                         </div>
                         <Link
                             href="/"
-                            className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
+                            className="flex items-center gap-2 text-[var(--navy)]/80 hover:text-[var(--navy)] transition-colors"
                         >
                             <ArrowLeft className="w-4 h-4" />
                             Back to Home
@@ -117,41 +117,41 @@ function ThankYouContent() {
             <main className="container mx-auto px-6 py-20">
                 <div className="max-w-2xl mx-auto">
                     {/* Success Card */}
-                    <div className="bg-white rounded-3xl shadow-2xl p-12 text-center">
+                    <div className="bg-white rounded-3xl shadow-2xl p-12 text-center border border-[var(--beige)]">
                         {/* Success Icon */}
-                        <div className="mx-auto w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mb-8">
-                            <CheckCircle className="w-16 h-16 text-green-600" />
+                        <div className="mx-auto w-24 h-24 bg-[var(--color-gold)]/15 rounded-full flex items-center justify-center mb-8">
+                            <CheckCircle className="w-16 h-16 text-[color:var(--color-gold)]" />
                         </div>
 
                         {/* Page Title */}
-                        <h1 className="text-3xl font-bold text-gray-900 mb-4">
+                        <h1 className="text-3xl font-bold text-[var(--navy)] mb-4">
                             {getPageTitle()}
                         </h1>
 
                         {/* Success Message */}
-                        <h2 className="text-2xl font-bold text-gray-900 mb-6">Thank You!</h2>
+                        <h2 className="text-2xl font-bold text-[var(--navy)] mb-6">Thank You!</h2>
 
                         {name && (
-                            <p className="text-lg text-gray-700 mb-6">
+                            <p className="text-lg text-[var(--navy)] mb-6">
                                 Dear <span className="font-semibold">{name}</span>,
                             </p>
                         )}
 
-                        <p className="text-gray-600 mb-8 leading-relaxed text-lg">
+                        <p className="text-[var(--navy)]/80 mb-8 leading-relaxed text-lg">
                             {getFormTypeMessage()}
                         </p>
 
                         {/* Contact Information */}
-                        <div className="rounded-2xl p-6 mb-8 border bg-[oklch(0.21_0.034_264.665_/_0.06)] border-[oklch(0.21_0.034_264.665_/_0.25)]">
-                            <h3 className="font-semibold text-gray-900 mb-4 text-lg">Need immediate assistance?</h3>
+                        <div className="rounded-2xl p-6 mb-8 border bg-[var(--navy)]/5 border-[var(--beige)]">
+                            <h3 className="font-semibold text-[var(--navy)] mb-4 text-lg">Need immediate assistance?</h3>
                             <div className="space-y-3 text-base">
                                 <div className="flex items-center justify-center gap-3">
                                     <Phone className="w-5 h-5 text-brand" />
-                                    <span className="text-gray-700 font-medium">999 887 8448</span>
+                                    <span className="text-[var(--navy)] font-medium">999 887 8448</span>
                                 </div>
                                 <div className="flex items-center justify-center gap-3">
                                     <Mail className="w-5 h-5 text-brand" />
-                                    <span className="text-gray-700 font-medium">info@theemberlynn.com</span>
+                                    <span className="text-[var(--navy)] font-medium">info@theemberlynn.com</span>
                                 </div>
                             </div>
                         </div>
@@ -168,35 +168,35 @@ function ThankYouContent() {
                             <Button
                                 variant="outline"
                                 onClick={() => router.push('/')}
-                                className="w-full border-2 border-gray-300 text-gray-700 hover:bg-gray-50 text-lg py-4 rounded-xl"
+                                className="w-full border-2 border-[var(--beige)] text-[var(--navy)] hover:bg-[var(--beige)]/20 text-lg py-4 rounded-xl"
                             >
                                 Close ({countdown}s)
                             </Button>
                         </div>
 
                         {/* Auto-close notice */}
-                        <p className="text-sm text-gray-500 mt-6">
+                        <p className="text-sm text-[var(--navy)]/70 mt-6">
                             This page will automatically redirect to home in {countdown} seconds
                         </p>
                     </div>
 
                     {/* Additional Information */}
-                    <div className="mt-12 bg-white rounded-2xl shadow-lg p-8">
-                        <h3 className="text-xl font-bold text-gray-900 mb-4 text-center">What happens next?</h3>
+                    <div className="mt-12 bg-white rounded-2xl shadow-lg p-8 border border-[var(--beige)]">
+                        <h3 className="text-xl font-bold text-[var(--navy)] mb-4 text-center">What happens next?</h3>
                         <div className="grid md:grid-cols-2 gap-6">
                             <div className="text-center">
-                                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <div className="w-16 h-16 bg-[var(--color-gold)]/15 rounded-full flex items-center justify-center mx-auto mb-4">
                                     <span className="text-2xl">📞</span>
                                 </div>
-                                <h4 className="font-semibold text-gray-900 mb-2">Phone Call</h4>
-                                <p className="text-gray-600 text-sm">Our team will call you within 24 hours to discuss your requirements.</p>
+                                <h4 className="font-semibold text-[var(--navy)] mb-2">Phone Call</h4>
+                                <p className="text-[var(--navy)]/80 text-sm">Our team will call you within 24 hours to discuss your requirements.</p>
                             </div>
                             <div className="text-center">
-                                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <div className="w-16 h-16 bg-[var(--color-gold)]/15 rounded-full flex items-center justify-center mx-auto mb-4">
                                     <span className="text-2xl">📧</span>
                                 </div>
-                                <h4 className="font-semibold text-gray-900 mb-2">Email Confirmation</h4>
-                                <p className="text-gray-600 text-sm">You'll receive a detailed email with project information and next steps.</p>
+                                <h4 className="font-semibold text-[var(--navy)] mb-2">Email Confirmation</h4>
+                                <p className="text-[var(--navy)]/80 text-sm">You'll receive a detailed email with project information and next steps.</p>
                             </div>
                         </div>
                     </div>
@@ -204,9 +204,9 @@ function ThankYouContent() {
             </main>
 
             {/* Footer */}
-            <footer className="bg-gray-900 text-white py-8 mt-20">
+            <footer className="bg-[var(--navy)] text-white py-8 mt-20">
                 <div className="container mx-auto px-6 text-center">
-                    <p className="text-gray-400"> 2024 Emberlynn Group. All rights reserved.</p>
+                    <p className="text-[var(--beige)]/80"> 2024 Emberlynn Group. All rights reserved.</p>
                 </div>
             </footer>
         </div>

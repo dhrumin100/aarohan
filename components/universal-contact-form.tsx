@@ -107,12 +107,12 @@ export function UniversalContactForm({
 
   return (
     <div className="space-y-4">
-      {title && <h3 className="text-xl font-bold text-gray-900">{title}</h3>}
-      {description && <p className="text-gray-600 text-sm">{description}</p>}
+      {title && <h3 className="text-xl font-bold text-[var(--navy)]">{title}</h3>}
+      {description && <p className="text-[var(--navy)]/80 text-sm">{description}</p>}
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <Label htmlFor="fullName" className="text-sm font-medium text-gray-700 mb-2 block">
+          <Label htmlFor="fullName" className="text-sm font-medium text-[var(--navy)] mb-2 block">
             Full Name *
           </Label>
           <Input
@@ -122,12 +122,12 @@ export function UniversalContactForm({
             value={formData.fullName}
             onChange={(e) => handleChange("fullName", e.target.value)}
             required
-            className="h-12 text-base"
+            className="h-12 text-base bg-white text-[var(--navy)] placeholder:text-[var(--navy)]/55 border-[var(--beige)]/70 focus-visible:border-[var(--color-gold)]"
           />
         </div>
 
         <div>
-          <Label htmlFor="mobile" className="text-sm font-medium text-gray-700 mb-2 block">
+          <Label htmlFor="mobile" className="text-sm font-medium text-[var(--navy)] mb-2 block">
             Mobile Number *
           </Label>
           <Input
@@ -137,12 +137,12 @@ export function UniversalContactForm({
             value={formData.mobile}
             onChange={(e) => handleChange("mobile", e.target.value)}
             required
-            className="h-12 text-base"
+            className="h-12 text-base bg-white text-[var(--navy)] placeholder:text-[var(--navy)]/55 border-[var(--beige)]/70 focus-visible:border-[var(--color-gold)]"
           />
         </div>
 
         <div>
-          <Label htmlFor="email" className="text-sm font-medium text-gray-700 mb-2 block">
+          <Label htmlFor="email" className="text-sm font-medium text-[var(--navy)] mb-2 block">
             Email Address *
           </Label>
           <Input
@@ -152,17 +152,17 @@ export function UniversalContactForm({
             value={formData.email}
             onChange={(e) => handleChange("email", e.target.value)}
             required
-            className="h-12 text-base"
+            className="h-12 text-base bg-white text-[var(--navy)] placeholder:text-[var(--navy)]/55 border-[var(--beige)]/70 focus-visible:border-[var(--color-gold)]"
           />
         </div>
 
         {showPropertyType && (
           <div>
-            <Label htmlFor="propertyType" className="text-sm font-medium text-gray-700 mb-2 block">
+            <Label htmlFor="propertyType" className="text-sm font-medium text-[var(--navy)] mb-2 block">
               Property Type
             </Label>
             <Select value={formData.propertyType} onValueChange={(value) => handleChange("propertyType", value)}>
-              <SelectTrigger className="h-12 text-base">
+              <SelectTrigger className="h-12 text-base bg-white text-[var(--navy)] border-[var(--beige)]/70 focus-visible:border-[var(--color-gold)]">
                 <SelectValue placeholder="Select property type" />
               </SelectTrigger>
               <SelectContent>
@@ -176,7 +176,7 @@ export function UniversalContactForm({
 
         {showMessage && (
           <div>
-            <Label htmlFor="message" className="text-sm font-medium text-gray-700 mb-2 block">
+            <Label htmlFor="message" className="text-sm font-medium text-[var(--navy)] mb-2 block">
               Message
             </Label>
             <Textarea
@@ -185,7 +185,7 @@ export function UniversalContactForm({
               value={formData.message}
               onChange={(e) => handleChange("message", e.target.value)}
               rows={4}
-              className="text-base"
+              className="text-base bg-white text-[var(--navy)] placeholder:text-[var(--navy)]/55 border-[var(--beige)]/70 focus-visible:border-[var(--color-gold)]"
             />
           </div>
         )}
@@ -193,7 +193,7 @@ export function UniversalContactForm({
         <Button
           type="submit"
           disabled={isSubmitting}
-          className="w-full h-12 text-base bg-gray-900 hover:bg-gray-800 text-white hover-lift disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full h-12 text-base bg-[var(--color-gold)] hover:brightness-110 text-white hover-lift disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {isSubmitting ? "Submitting..." : buttonText}
         </Button>

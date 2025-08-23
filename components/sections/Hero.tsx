@@ -12,7 +12,7 @@ interface HeroProps {
 
 export function Hero({ galleryImages, onOpenContact }: HeroProps) {
   return (
-    <section id="home" className="relative bg-white animate-on-scroll animate-fade-in hero-section md:min-h-screen">
+    <section id="home" className="relative bg-champagne text-[var(--navy)] animate-on-scroll animate-fade-in hero-section md:min-h-screen overflow-hidden">
       {/* Multicolor decorative background (gold + brand) */}
       <div className="pointer-events-none absolute inset-0 -z-10">
         {/* Left gold glow */}
@@ -31,26 +31,29 @@ export function Hero({ galleryImages, onOpenContact }: HeroProps) {
           style={{ background: "linear-gradient(90deg, var(--color-gold), var(--color-brand))" }}
         />
       </div>
+      {/* Subtle paper/linen noise overlay */}
+      <div className="linen-noise pointer-events-none absolute inset-0 -z-10" />
+
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-6 md:gap-12 items-start md:items-center py-8 md:py-20 mobile-optimized-grid">
             {/* Left Content */}
             <div className="text-left space-y-8 order-1 lg:order-1">
               <div className="animate-slide-up">
-                <span className="inline-block px-4 py-2 bg-[#d4af37]/15 text-[var(--color-gold)] rounded-full text-sm font-medium mb-6">
+                <span className="inline-block px-4 py-2 bg-[var(--color-gold)]/15 text-[var(--color-gold)] rounded-full text-sm font-medium mb-6">
                   LUXURY REDEFINED
                 </span>
-                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-4 leading-tight font-serif">
+                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[var(--color-gold)] mb-4 leading-tight font-serif">
                   AAROHAN
                 </h1>
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-12 h-0.5 bg-gradient-to-r from-[var(--color-gold)] to-[var(--color-gold)]"></div>
-                  <p className="text-xl md:text-2xl text-gray-700 font-light">by Emberlynn</p>
+                  <p className="text-xl md:text-2xl text-[var(--navy)]/80 font-light">by Emberlynn</p>
                 </div>
               </div>
 
               <p
-                className="hidden md:block text-lg md:text-xl text-gray-600 leading-relaxed animate-slide-up max-w-lg"
+                className="hidden md:block text-lg md:text-xl text-[var(--navy)]/80 leading-relaxed animate-slide-up max-w-lg"
                 style={{ animationDelay: "200ms" }}
               >
                 Where architectural brilliance meets contemporary luxury. Experience elevated living in Gandhinagar's
@@ -58,31 +61,31 @@ export function Hero({ galleryImages, onOpenContact }: HeroProps) {
               </p>
 
               <div className="hidden md:grid grid-cols-3 gap-6 animate-slide-up" style={{ animationDelay: "400ms" }}>
-                <div className="text-center p-6 bg-gray-50 rounded-xl border hover:bg-gray-100 transition-all duration-300">
-                  <div className="text-3xl md:text-4xl font-bold text-gray-900 mb-1 font-serif">2</div>
-                  <div className="text-gray-600 text-sm uppercase tracking-wider font-medium">Towers</div>
+                <div className="text-center p-6 bg-[var(--navy)]/5 rounded-xl border border-[var(--navy)]/10 hover:bg-[var(--navy)]/10 transition-all duration-300">
+                  <div className="text-3xl md:text-4xl font-bold text-[var(--navy)] mb-1 font-serif">2</div>
+                  <div className="text-[var(--navy)]/70 text-sm uppercase tracking-wider font-medium">Towers</div>
                 </div>
-                <div className="text-center p-6 rounded-xl border transition-all duration-300 bg-[#d4af37]/10 border-[#d4af37]/40 hover:bg-[#d4af37]/15">
+                <div className="text-center p-6 rounded-xl border transition-all duration-300 bg-[var(--color-gold)]/10 border-[var(--color-gold)]/40 hover:bg-[var(--color-gold)]/15">
                   <div className="text-3xl md:text-4xl font-bold text-[var(--color-gold)] mb-1 font-serif">22</div>
-                  <div className="text-[var(--color-gold)] text-sm uppercase tracking-wider font-medium/90">Stories</div>
+                  <div className="text-[var(--color-gold)]/90 text-sm uppercase tracking-wider font-medium">Stories</div>
                 </div>
-                <div className="text-center p-6 bg-gray-50 rounded-xl border hover:bg-gray-100 transition-all duration-300">
-                  <div className="text-3xl md:text-4xl font-bold text-gray-900 mb-1 font-serif">148</div>
-                  <div className="text-gray-600 text-sm uppercase tracking-wider font-medium">Units</div>
+                <div className="text-center p-6 bg-[var(--navy)]/5 rounded-xl border border-[var(--navy)]/10 hover:bg-[var(--navy)]/10 transition-all duration-300">
+                  <div className="text-3xl md:text-4xl font-bold text-[var(--navy)] mb-1 font-serif">148</div>
+                  <div className="text-[var(--navy)]/70 text-sm uppercase tracking-wider font-medium">Units</div>
                 </div>
               </div>
 
               <div className="hidden md:flex flex-col sm:flex-row gap-4 animate-slide-up" style={{ animationDelay: "600ms" }}>
                 <Button
                   onClick={onOpenContact}
-                  className="bg-gray-900 hover:bg-gray-800 text-white px-6 md:px-8 py-3 md:py-4 text-base md:text-lg font-medium rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 min-h-[44px]"
+                  className="px-6 md:px-8 py-3 md:py-4 text-base md:text-lg font-medium rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 min-h-[44px]"
                 >
                   Schedule Private Tour
                 </Button>
                 <Button
                   onClick={onOpenContact}
-                  variant="outline"
-                  className="hidden md:inline-flex border-2 border-gray-300 text-gray-700 hover:bg-gray-50 px-6 md:px-8 py-3 md:py-4 text-base md:text-lg font-medium rounded-xl hover:border-gray-400 transition-all duration-300 min-h-[44px]"
+                  variant="ghost"
+                  className="hidden md:inline-flex px-6 md:px-8 py-3 md:py-4 text-base md:text-lg font-medium rounded-xl transition-all duration-300 min-h-[44px] border border-[var(--color-gold)] text-[var(--color-gold)] hover:bg-white/5"
                 >
                   Download Brochure
                 </Button>
@@ -112,7 +115,7 @@ export function Hero({ galleryImages, onOpenContact }: HeroProps) {
                 <div className="mt-4 animate-slide-up">
                   <Button
                     onClick={onOpenContact}
-                    className="w-full bg-gray-900 hover:bg-gray-800 text-white py-3 text-base font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                    className="w-full py-3 text-base font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
                   >
                     Schedule Private Tour
                   </Button>
