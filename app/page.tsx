@@ -821,6 +821,7 @@ export default function Page() {
             description={`Please provide your contact details to receive detailed floor plan information for ${selectedFloorPlan}.`}
             buttonText="Submit"
             formType="floor-plan"
+            variant="dark"
             onSubmit={handleFloorPlanSubmit}
             onSuccess={() => { }}
           />
