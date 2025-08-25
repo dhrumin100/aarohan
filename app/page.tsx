@@ -837,6 +837,7 @@ export default function Page() {
             showPropertyType={true}
             buttonText="Submit Enquiry"
             formType="enquiry"
+            variant="dark"
             onSubmit={handleContactSubmit}
             onSuccess={() => { }}
           />

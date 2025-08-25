@@ -20,6 +20,7 @@ interface UniversalContactFormProps {
   onSubmit?: (data: any) => void
   onSuccess?: (data: any) => void
   onError?: (error: string) => void
+  variant?: "light" | "dark"
 }
 
 export function UniversalContactForm({
@@ -32,6 +33,7 @@ export function UniversalContactForm({
   onSubmit,
   onSuccess,
   onError,
+  variant = "light",
 }: UniversalContactFormProps) {
   const [formData, setFormData] = useState({
     fullName: "",
@@ -105,14 +107,16 @@ export function UniversalContactForm({
     setFormData((prev) => ({ ...prev, [field]: value }))
   }
 
+  const isDark = variant === "dark"
+
   return (
     <div className="space-y-4">
-      {title && <h3 className="text-xl font-bold text-[var(--navy)]">{title}</h3>}
-      {description && <p className="text-[var(--navy)]/80 text-sm">{description}</p>}
+      {title && <h3 className={`text-xl font-bold ${isDark ? 'text-[var(--beige)]' : 'text-[var(--navy)]'}`}>{title}</h3>}
+      {description && <p className={`${isDark ? 'text-[var(--beige)]/85' : 'text-[var(--navy)]/80'} text-sm`}>{description}</p>}
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <Label htmlFor="fullName" className="text-sm font-medium text-[var(--navy)] mb-2 block">
+          <Label htmlFor="fullName" className={`text-sm font-medium ${isDark ? 'text-[var(--beige)]' : 'text-[var(--navy)]'} mb-2 block`}>
             Full Name *
           </Label>
           <Input
@@ -122,12 +126,18 @@ export function UniversalContactForm({
             value={formData.fullName}
             onChange={(e) => handleChange("fullName", e.target.value)}
             required
-            className="h-12 text-base bg-white text-[var(--navy)] placeholder:text-[var(--navy)]/55 border-[var(--beige)]/70 focus-visible:border-[var(--color-gold)]"
+            className={
+              `h-12 text-base ${
+                isDark
+                  ? 'bg-transparent text-[var(--beige)] placeholder:text-[var(--beige)]/60 border-[var(--beige)]/40 focus-visible:border-[var(--color-gold)]'
+                  : 'bg-white text-[var(--navy)] placeholder:text-[var(--navy)]/55 border-[var(--beige)]/70 focus-visible:border-[var(--color-gold)]'
+              }`
+            }
           />
         </div>
 
         <div>
-          <Label htmlFor="mobile" className="text-sm font-medium text-[var(--navy)] mb-2 block">
+          <Label htmlFor="mobile" className={`text-sm font-medium ${isDark ? 'text-[var(--beige)]' : 'text-[var(--navy)]'} mb-2 block`}>
             Mobile Number *
           </Label>
           <Input
@@ -137,12 +147,18 @@ export function UniversalContactForm({
             value={formData.mobile}
             onChange={(e) => handleChange("mobile", e.target.value)}
             required
-            className="h-12 text-base bg-white text-[var(--navy)] placeholder:text-[var(--navy)]/55 border-[var(--beige)]/70 focus-visible:border-[var(--color-gold)]"
+            className={
+              `h-12 text-base ${
+                isDark
+                  ? 'bg-transparent text-[var(--beige)] placeholder:text-[var(--beige)]/60 border-[var(--beige)]/40 focus-visible:border-[var(--color-gold)]'
+                  : 'bg-white text-[var(--navy)] placeholder:text-[var(--navy)]/55 border-[var(--beige)]/70 focus-visible:border-[var(--color-gold)]'
+              }`
+            }
           />
         </div>
 
         <div>
-          <Label htmlFor="email" className="text-sm font-medium text-[var(--navy)] mb-2 block">
+          <Label htmlFor="email" className={`text-sm font-medium ${isDark ? 'text-[var(--beige)]' : 'text-[var(--navy)]'} mb-2 block`}>
             Email Address *
           </Label>
           <Input
@@ -152,17 +168,23 @@ export function UniversalContactForm({
             value={formData.email}
             onChange={(e) => handleChange("email", e.target.value)}
             required
-            className="h-12 text-base bg-white text-[var(--navy)] placeholder:text-[var(--navy)]/55 border-[var(--beige)]/70 focus-visible:border-[var(--color-gold)]"
+            className={
+              `h-12 text-base ${
+                isDark
+                  ? 'bg-transparent text-[var(--beige)] placeholder:text-[var(--beige)]/60 border-[var(--beige)]/40 focus-visible:border-[var(--color-gold)]'
+                  : 'bg-white text-[var(--navy)] placeholder:text-[var(--navy)]/55 border-[var(--beige)]/70 focus-visible:border-[var(--color-gold)]'
+              }`
+            }
           />
         </div>
 
         {showPropertyType && (
           <div>
-            <Label htmlFor="propertyType" className="text-sm font-medium text-[var(--navy)] mb-2 block">
+            <Label htmlFor="propertyType" className={`text-sm font-medium ${isDark ? 'text-[var(--beige)]' : 'text-[var(--navy)]'} mb-2 block`}>
               Property Type
             </Label>
             <Select value={formData.propertyType} onValueChange={(value) => handleChange("propertyType", value)}>
-              <SelectTrigger className="h-12 text-base bg-white text-[var(--navy)] border-[var(--beige)]/70 focus-visible:border-[var(--color-gold)]">
+              <SelectTrigger className={`h-12 text-base ${isDark ? 'bg-transparent text-[var(--beige)] border-[var(--beige)]/40 focus-visible:border-[var(--color-gold)]' : 'bg-white text-[var(--navy)] border-[var(--beige)]/70 focus-visible:border-[var(--color-gold)]'}`}>
                 <SelectValue placeholder="Select property type" />
               </SelectTrigger>
               <SelectContent>
@@ -176,7 +198,7 @@ export function UniversalContactForm({
 
         {showMessage && (
           <div>
-            <Label htmlFor="message" className="text-sm font-medium text-[var(--navy)] mb-2 block">
+            <Label htmlFor="message" className={`text-sm font-medium ${isDark ? 'text-[var(--beige)]' : 'text-[var(--navy)]'} mb-2 block`}>
               Message
             </Label>
             <Textarea
@@ -185,7 +207,13 @@ export function UniversalContactForm({
               value={formData.message}
               onChange={(e) => handleChange("message", e.target.value)}
               rows={4}
-              className="text-base bg-white text-[var(--navy)] placeholder:text-[var(--navy)]/55 border-[var(--beige)]/70 focus-visible:border-[var(--color-gold)]"
+              className={
+                `text-base ${
+                  isDark
+                    ? 'bg-transparent text-[var(--beige)] placeholder:text-[var(--beige)]/60 border-[var(--beige)]/40 focus-visible:border-[var(--color-gold)]'
+                    : 'bg-white text-[var(--navy)] placeholder:text-[var(--navy)]/55 border-[var(--beige)]/70 focus-visible:border-[var(--color-gold)]'
+                }`
+              }
             />
           </div>
         )}
